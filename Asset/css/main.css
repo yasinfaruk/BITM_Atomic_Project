@@ -1,0 +1,50 @@
+ul#li_left {
+    margin-left: 640px;
+}
+.header_part{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 50px;
+}
+p.header_text {
+    margin: 10px 110px;
+    font-size: 22px;
+}
+
+/*----------- table ------------*/
+.custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    font-size: 14px;
+}
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+}
+/*.table_section{
+    font-size: 13px;
+}*/
+.table_pagination{
+    margin-top: -50px;
+}
+.table_part{
+    margin-top: -46px;
+}
+
+/*------------- add-book ------------------*/
+.add_book{
+    border: 1px solid #ccc;
+    overflow: hidden;
+    border-radius: 6px;
+    /*min-height: 400px;*/
+    /*padding: 100px;*/
+}
+.add_book_form{
+    padding: 30px 320px;
+}
+.back_button{
+    margin-top: 8px;
+}
+.color_orange{
+    color: darkcyan;
+}

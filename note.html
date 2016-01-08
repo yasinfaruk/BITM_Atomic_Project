@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <p>
+            From my own perception and also humble request to you when you asked to say something about 
+            our problem in class, Please record this session when you are solving that individual problem because
+            one individual solution may be helpful for the rest of the students. Also 
+            someone may face same problem sooner or later. And your concrete solution will be helpful at that
+            time. 
+            
+        </p>
+        <p>
+            Firstly, we have to create a database with table. And creating every table column and row will 
+            depend on Form field and required fields. As we created a form to take user input, which will send 
+            action page ("store.php") after submitting the button. In second steps, the user input data will 
+            exist in "store.php" page. According our necessity we will call individual method to send our user
+            input data to be inserted.
+            
+            To insert our data firstly, we will connect with database then link with database table. Then we will
+            create a query to store in database. After creating query it will store and page will be redirected in
+            view page to show what we have stored so far. 
+            
+            Before redirecting in index page we will test the procedure whether it is working or not by taking 
+            help from Utility method . If it's ok then we will redirect thorough Utility::redirect(); method. 
+            
+            Now we will see our storing data in a scattering way. Also we will not see the whole storing data in
+            index page. 
+            
+            To see the whole data in organizing way, now we will call another method from index page.
+            After calling method firstly, we will connect with database and table. Then we will create a query  
+            to select all data from database table. After selecting if we "var_dump()" that query, we will see a
+            single data from table but not all. TO see all data we will run a "while loop" so that it will show
+            us all data from table. After running a "while loop" we will store all data in a array then return to 
+            index page to be shown. 
+            
+            Now we will be seeing  all table data in scattering way if we "var_dump()" here. If we want to see all
+            data in table row then we will 
+            run "foreach()" loop before table row tag. Here we will create "foreach()" loop inside php tag. and 
+            inside every table row we will create php tag to "echo" so that we can dynamically see all of data
+            inside of table row. 
+            
+            PROBLEM I FACED: I faced the following problem.
+            
+        </p>
+    </body>
+</html>
