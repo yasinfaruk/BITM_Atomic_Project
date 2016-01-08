@@ -7,7 +7,7 @@ use App\BITM\SEIP107348\Utility\Utility;
 //Utility::dd($_GET);
 
 $image = new Picture();
-$view = $image->edit($_GET['id']);
+$views = $image->edit($_GET['id']);
 //var_dump($views);
 ?>
 
@@ -25,7 +25,7 @@ $view = $image->edit($_GET['id']);
                 <div class="row">
                     <div>
                         <div class="col-md-6">
-                            <p class="header_text text-success">THE LSIT OF BOOKS</p>
+                            <p class="header_text text-success">THE LSIT OF IMAGES</p>
                         </div>
                         <div class="col-md-6">  					
 
@@ -54,11 +54,11 @@ $view = $image->edit($_GET['id']);
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse navbar-ex1-collapse">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="#">Add Book</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
+                                    <li><a href="../../../index.php">HOME</a></li>
+                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/File/index.php"> VIEW</a></li>
+                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/File/create.php">ADD FILE</a></li>
+                                    <!--<li><a href="#">Link</a></li>-->
+
                                 </ul>
 
                                 <ul class="nav navbar-nav navbar-right"> 
@@ -84,14 +84,16 @@ $view = $image->edit($_GET['id']);
                                 <tr>
                                     <th>Id</th>
                                     <th>Title</th>
+                                    <th class="text-center">Image</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                     
                             <tr>
-                                <td><?php echo $view['id'];?></td>
-                                <td><?php echo $view['title'];?></td>
-                                <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                                <td><?php echo $views['id'];?></td>
+                                <td><?php echo $views['image'];?></td>
+                                <td class="text-center"><img src="<?php echo "images/".$views['image'] ?>" height="150" width="150" style="border-radius: 5px;"></td>
+                                <td class="text-center"><a class='btn btn-info btn-xs' href="update.php?id=<?php echo $views['id'] ;?>"><span class="glyphicon glyphicon-edit"></span> Update</a>
                                 </td>
                             </tr>
 

@@ -46,6 +46,38 @@ class Book {
 
         return $books;
     }
+    
+     public function view($id = null) {
+        if (is_null($id)) {
+            Utility::message('No id available !!');
+            return Utility::redirect('index.php');
+        }
+
+        $conn = mysql_connect("localhost", "root", "root") or die("Not connected");
+        $link = mysql_select_db("BITM") or die("Not connected table");
+
+        $query = "SELECT * FROM `BITM`.`atomicProject` WHERE `atomicProject`.`id` = " . $id;
+
+        $result = mysql_query($query);
+        $row = mysql_fetch_assoc($result);
+        return $row;
+    }
+    
+     public function update($id = null) {
+        if (is_null($id)) {
+            Utility::message('No id available !!');
+            return Utility::redirect('index.php');
+        }
+
+        $conn = mysql_connect("localhost", "root", "root") or die("Not connected");
+        $link = mysql_select_db("BITM") or die("Not connected table");
+
+        $query = "SELECT * FROM `BITM`.`atomicProject` WHERE `atomicProject`.`id` = " . $id;
+
+        $result = mysql_query($query);
+        $row = mysql_fetch_assoc($result);
+        return $row;
+    }
 
     public function delete($id = null) {
 
@@ -69,20 +101,6 @@ class Book {
         Utility::redirect('index.php');
     }
 
-    public function view($id = null) {
-        if (is_null($id)) {
-            Utility::message('No id available !!');
-            return Utility::redirect('index.php');
-        }
-
-        $conn = mysql_connect("localhost", "root", "root") or die("Not connected");
-        $link = mysql_select_db("BITM") or die("Not connected table");
-
-        $query = "SELECT * FROM `BITM`.`atomicProject` WHERE `atomicProject`.`id` = " . $id;
-
-        $result = mysql_query($query);
-        $row = mysql_fetch_assoc($result);
-        return $row;
-    }
+   
 
 }

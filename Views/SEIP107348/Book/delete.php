@@ -8,4 +8,4 @@ use App\BITM\SEIP107348\Utility\Utility;
 //Utility::dd($_GET);
 
 $book = new Book();
-echo $book ->delete($_POST['id']);
+echo $book ->delete($_GET['id']);

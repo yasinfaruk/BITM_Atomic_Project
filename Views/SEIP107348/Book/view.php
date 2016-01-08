@@ -54,11 +54,11 @@ $view = $book->view($_GET['id']);
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse navbar-ex1-collapse">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="#">Add Book</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
+                                    <li><a href="../../../index.php">HOME</a></li>
+                                    <li><a href="index.php">VIEW</a></li>
+                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Book/create.php">ADD BOOK</a></li>
+                                    <!--<li><a href="#">Link</a></li>-->
+
                                 </ul>
 
                                 <ul class="nav navbar-nav navbar-right"> 
@@ -87,15 +87,15 @@ $view = $book->view($_GET['id']);
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
-                    
+
                             <tr>
-                                <td><?php echo $view['id'];?></td>
-                                <td><?php echo $view['title'];?></td>
+                                <td><?php echo $view['id']; ?></td>
+                                <td><?php echo $view['title']; ?></td>
                                 <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a>
                                 </td>
                             </tr>
 
-                  
+
 
                         </table>
 

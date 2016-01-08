@@ -69,7 +69,7 @@ $views = $view->index();
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse navbar-ex1-collapse">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="#">HOME</a></li>
+                                    <li><a href="../../../index.php">HOME</a></li>
                                     <li><a href="#">VIEW</a></li>
                                     <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Book/create.php">ADD BOOK</a></li>
                                     <!--<li><a href="#">Link</a></li>-->
@@ -97,7 +97,7 @@ $views = $view->index();
                                 <thead>
                                     <!-- <a href="#" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new categories</a> -->
                                     <tr>
-                                        <th>ID</th>
+                                        <th>List</th>
                                         <th>Title</th>
                                         <!--<th>Created</th>-->
                                         <!--<th>Modified</th>-->
@@ -105,30 +105,23 @@ $views = $view->index();
                                         <!--<th>Modified By</th>-->
                                         <th class="text-center">Action</th>
                                     </tr>
-                                </thead>
-                                <?php foreach ($views as $book) { ?>
+                                </thead>                                
+
+                                <?php $n = 1;
+                                foreach ($views as $book) { ?>                                    
                                     <tr>
-                                        <td><?php echo $book['id']; ?></td>
+                                        <td><?php echo $n; ?></td>
                                         <td><?php echo $book['title']; ?></td>
                                         <td class="text-center">
-                                            <button name="view" value="<?php echo $book['title']; ?>" type="submit" class="btn btn-info btn-xs">
-                                                <a href="view.php?id=<?php echo $book['id'];?>" style="color: white;text-decoration: none">
-                                                    <span class="glyphicon glyphicon-edit"></span> View</a>
-                                            </button>
-                                            <button type="submit" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit </button>                                    
-
-                                            <input type="hidden" name="id" value="<?php echo $book['id']; ?>">
-                                            <button type="submit" name="delete" class="btn btn-danger btn-xs delete"><span class="glyphicon glyphicon-remove"></span> Delete</button>
-                                            <button type="submit" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-trash"></span> Recover</button>
-                                            <button type="submit" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-envelope"></span> Email</button>
-    <!--                                            <a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> View </a> 
-                                            <a class='btn btn-success btn-xs' href="#"></a> 
-                                            <a href="#" name="delete" class="btn btn- btn-xs delete"></a>
-                                            <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-trash"></span></a>
-                                            <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-envelope"></span></a>-->
+                                            <a class='btn btn-info btn-xs' href="view.php?id=<?php echo $book['id']; ?>"><span class="glyphicon glyphicon-edit"></span> View </a> 
+                                            <a class='btn btn-success btn-xs' href="update.php?id=<?php echo $book['id']; ?>"><span class="glyphicon glyphicon-pencil"></span> Edit</a> 
+                                            <a href="delete.php?id=<?php echo $book['id']; ?>" name="delete" class="btn btn-danger btn-xs delete"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                                            <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-trash"></span> Recover</a>
+                                            <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-envelope"></span> Email</a>
                                         </td>
-                                    </tr>  
-                                <?php } ?>
+                                    </tr> 
+
+                                 <?php $n++;} ?>
                             </table>
 
                         </div>

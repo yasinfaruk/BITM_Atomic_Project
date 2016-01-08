@@ -1,6 +1,7 @@
 <?php
 
 namespace App\BITM\SEIP107348\File;
+
 use App\BITM\SEIP107348\Utility\Utility;
 
 class Picture {
@@ -58,35 +59,51 @@ class Picture {
         return $images;
     }
 
-    public function store() {
-        return "store - I am storing data";
-    }
+    public function edit($id = null) {
 
-    public function edit() {
-        
         if (is_null($id)) {
             Utility::message('No id available !!');
             return Utility::redirect('index.php');
         }
-        
+
         $conn = mysql_connect("localhost", "root", "root") or die("not connected");
         $lnk = mysql_select_db("BITM") or die("cannot select db table");
+
+        $query = "SELECT * FROM `file` WHERE `id` = " . $id;
+        $result = mysql_query($query);
+        
+        $row = mysql_fetch_assoc($result);
+        return $row;
     }
 
-    public function update() {
-        return "update - I am updating data";
+    public function update($id = NULL) {
+        
+        if(is_null($id)){
+            Utility::message("No id available !!");
+            return Utility::redirect();
+        }
+        $conn = mysql_connect("localhost", "root", "root") or die("not connected");
+        $lnk = mysql_select_db("BITM") or die("cannot select db table");
+
+        $query = "SELECT * FROM `file` WHERE `id` = " . $id;
+        $result = mysql_query($query);
+
+        while ($row = mysql_fetch_assoc($result)) {
+            $images[] = $row;
+        }
+        return $images;
     }
 
     public function delete($id = NULL) {
-        
+
         if (is_null($id)) {
             Utility::message('No id available !!');
             return Utility::redirect('index.php');
         }
-        
+
         $conn = mysql_connect("localhost", "root", "root") or die("not connected");
         $lnk = mysql_select_db("BITM") or die("cannot select db table");
-        
+
         $query = "DELETE FROM `file` WHERE `id` = " . $id;
 
         $result = mysql_query($query);
@@ -97,7 +114,6 @@ class Picture {
         }
 
         Utility::redirect('index.php');
-        
     }
 
 }

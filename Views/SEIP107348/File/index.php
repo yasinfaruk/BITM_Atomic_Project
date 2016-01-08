@@ -106,9 +106,12 @@ $views = $view->index();
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
+                                
+                                <!--$x = 1;-->
                                 <?php foreach ($views as $image) { ?>
+                                     
                                     <tr>
-                                        <td><?php echo $image['id']; ?></td>
+                                        <td><?php echo  $image['id']; ?></td>
                                         <td><?php echo $image['image']; ?></td>
                                         <td class="text-center">
                                             <img src="<?php echo "images/".$image['image'] ?>" height="50" width="50" style="border-radius: 5px;">
@@ -132,7 +135,9 @@ $views = $view->index();
                                             <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-trash"></span> Recover</a>
                                             <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-envelope"></span> Email</a>
                                         </td>
-                                    </tr>  
+                                    </tr> 
+                                    
+                                    
                                 <?php } ?>
                             </table>
 
