@@ -1,5 +1,4 @@
 
-
 <?php
 include_once ($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . "BITM_Atomic_Project" . DIRECTORY_SEPARATOR . "vendor" . DIRECTORY_SEPARATOR . "autoload.php");
 
@@ -7,41 +6,21 @@ use App\BITM\SEIP107348\Select\City;
 use App\BITM\SEIP107348\Utility\Utility;
 
 $view = new City();
-$views = $view->update($_GET['id']);
+$views = $view->view($_GET['id']);
 
-$id = $views['id'];
-
-if (isset($_POST['submit'])) {
-    $city = $_POST['select'];
-
-    $conn = mysql_connect("localhost", "root", "root") or die("not connected");
-    $lnk = mysql_select_db("BITM") or die("cannot select db table");
-
-    $query = "UPDATE `select_city` SET `city`='" . $city . "' WHERE  id='$id'";
-    $result = mysql_query($query);
-
-    if ($result) {
-        Utility::message("Update is successful");
-    } else {
-        Utility::message("Update is failed.");
-    }
-
-    Utility::redirect('index.php');
-}
+//Utility::d($views);
 ?>
+
 
 <!DOCTYPE>
 <html>
     <head>
-        <title>City List</title>
+        <title>Book Store</title>
         <link href="../../../Asset/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link href="../../../Asset/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="../../../Asset/css/main.css" rel="stylesheet" type="text/css"/>
-        <style>
-            .add_book_form{
-                padding: 15px 170px;
-            }
-        </style>
+        <script src="../../../Asset/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+        <script src="../../../Asset/js/bootstrap.min.js" type="text/javascript"></script>
     </head>
     <body>
         <section class="header_part">
@@ -49,7 +28,7 @@ if (isset($_POST['submit'])) {
                 <div class="row">
                     <div>
                         <div class="col-md-6">
-                            <p class="header_text color_orange">THE LIST OF CITIES</p>
+                            <p class="header_text text-success">THE LIST OF CITIES</p>
                         </div>
                         <div class="col-md-6">  					
 
@@ -69,7 +48,7 @@ if (isset($_POST['submit'])) {
         </section>
 
 
-        <!-- =============== navbar-section =============== -->
+        <!-- =============== table-section =============== -->
         <section class="table_section">
             <div class="container">
                 <div class="row col-md-10 col-md-offset-1  custyle">
@@ -80,8 +59,9 @@ if (isset($_POST['submit'])) {
                                 <ul class="nav navbar-nav">
                                     <li><a href="../../../index.php">HOME</a></li>
                                     <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Select/index.php">VIEW</a></li>
-                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Select/create.php">ADD BOOK</a></li>
+                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Select/create.php">ADD EMAIL</a></li>
                                     <!--<li><a href="#">Link</a></li>-->
+
                                 </ul>
 
                                 <ul class="nav navbar-nav navbar-right"> 
@@ -98,37 +78,60 @@ if (isset($_POST['submit'])) {
                             </div><!-- /.navbar-collapse -->
                         </nav>
                     </div>
+                    <!-- ----------------- table ------------------ -->
+                    <div class="table_part">
+                        <table class="table table-bordered custab">
 
-                    <!--======================= add-book-form =====================-->
+                            <thead>
+                                <!-- <a href="#" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new categories</a> -->
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                                <tr>
+                                    <td><?php echo $views['id']; ?></td>
+                                    <td><?php echo $views['city']; ?></td>
+                                </tr>  
+                        </table>
 
-                    <div class="add_book">
-                        <div class="add_book_form">
-                            <h4 class="color_orange">Add Your Favorite Movies</h4>
-                            <form class="form-horizontal" action="#" method="post">
-                                <div class="form-group">
-                                    <div class="col-lg-6">
-                                        <select class="form-control" id="select" name="select">
-                                            <option value="select">Select Location</option>
-                                            <option value="dhaka">Dhaka</option>
-                                            <option value="chitagong">Chitagong</option>
-                                            <option value="khulna">Khulna</option>
-                                            <option value="rajshai">Rajshai</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <button type="submit" class="btn btn-default" name="submit">Submit</button>
-                            </form>
-
-                        </div>
                     </div>
-                    <div class="back_button">
-                        <a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Book/index.php">
-                            <button type="submit" class="btn btn-danger">&ll; Back</button>
-                        </a>
+                    <!-- ---------- pagination ------------ -->
+                    <div class="table_pagination">
+                        <ul class="pagination pagination-sm">
+                            <li class="disabled"><a href="#">&laquo;</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">&raquo;</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
+        
+        
+         <script>
+            
+            $(document).ready(function () {
+                
+                $(".alert-message").alert();
+                window.setTimeout(function () {
+                    $(".alert-message").alert('close');
+                }, 5000);
+
+                $('.delete').bind('click', function (e) {
+                    var deleteItem = confirm('Do you want to delete ?');
+                    if (!deleteItem) {
+                        e.preventDefault();
+                    }
+                });
+            });
+
+        </script>
     </body>
 </html>
+
+

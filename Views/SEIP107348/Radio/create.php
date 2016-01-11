@@ -17,7 +17,7 @@
                 <div class="row">
                     <div>
                         <div class="col-md-6">
-                            <p class="header_text color_orange">THE LSIT OF MOVIES</p>
+                            <p class="header_text color_orange">SELECT THE GENDER</p>
                         </div>
                         <div class="col-md-6">  					
 
@@ -46,9 +46,9 @@
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse navbar-ex1-collapse">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="#">HOME</a></li>
-                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Book/index.php">VIEW</a></li>
-                                    <li><a href="#">ADD BOOK</a></li>
+                                    <li><a href="../../../index.php">HOME</a></li>
+                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Radio/index.php">VIEW</a></li>
+                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Radio/create.php">ADD GENDER</a></li>
                                     <!--<li><a href="#">Link</a></li>-->
                                 </ul>
 
@@ -71,7 +71,7 @@
                  
                     <div class="add_book">
                         <div class="add_book_form">
-                            <h4 class="color_orange">Add Your Favorite Movies</h4>
+                            <h4 class="color_orange">Select The Gender</h4>
                             <form class="form-horizontal" method="post" action="store.php">
                                 <div class="radio">
                                     <label>

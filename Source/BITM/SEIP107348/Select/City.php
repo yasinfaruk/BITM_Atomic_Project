@@ -1,6 +1,7 @@
 <?php
 
 namespace App\BITM\SEIP107348\Select;
+use App\BITM\SEIP107348\Utility\Utility;
 
 class City {
 
@@ -15,29 +16,92 @@ class City {
     public function __construct($name = false) {
         $this->city = $name;
     }
+    
+    public function create() {
+        
+        $connect = mysql_connect("localhost", "root", "root");
+        $link = mysql_select_db("BITM");
+
+        $query = "INSERT INTO `select_city`( `city`) VALUES ('" . $this->city . "')";
+        $result = mysql_query($query);
+
+        if ($result) {
+            Utility::message("Insert is successful");
+        } else {
+            Utility::message("Insert is failed.");
+        }
+
+        Utility::redirect('index.php');
+    }
 
     public function index() {
-        return "The city Name is : " . $this->city;
+        $city = array();
+        $connect = mysql_connect("localhost", "root", "root");
+        $link = mysql_select_db("BITM");
+
+        $query = "SELECT * FROM `select_city`";
+        $result = mysql_query($query);
+
+        while ($row = mysql_fetch_assoc($result)) {
+            $city[] = $row;
+        }
+
+        return $city;
+        
     }
 
-    public function create() {
-        return "create - I am create form";
+    public function view($id = NULL) {
+        
+       if (is_null($id)) {
+            Utility::message('No id available !!');
+            return Utility::redirect('index.php');
+        }
+
+        $connect = mysql_connect("localhost", "root", "root");
+        $link = mysql_select_db("BITM");
+
+        $query = "SELECT * FROM `select_city` WHERE `id` = " . $id;
+        $result = mysql_query($query);
+        $row = mysql_fetch_assoc($result);
+
+        return $row;
     }
 
-    public function store() {
-        return "store - I am storing data";
+    public function update($id = NULL) {
+        if (is_null($id)) {
+            Utility::message('No id available !!');
+            return Utility::redirect('index.php');
+        }
+
+        $connect = mysql_connect("localhost", "root", "root");
+        $link = mysql_select_db("BITM");
+
+        $query = "SELECT * FROM `select_city` WHERE `id` = " . $id;
+        $result = mysql_query($query);
+        $row = mysql_fetch_assoc($result);
+
+        return $row;
     }
 
-    public function edit() {
-        return "edit - I am editing form";
-    }
+    public function delete($id = NULL) {
+        if (is_null($id)) {
+            Utility::message('No id available !!');
+            return Utility::redirect('index.php');
+        }
 
-    public function update() {
-        return "update - I am updating data";
-    }
+        $connect = mysql_connect("localhost", "root", "root");
+        $link = mysql_select_db("BITM");
 
-    public function delete() {
-        return "delete - I delete data";
+        $query = "DELETE FROM `select_city` WHERE `id` = " . $id;
+        $result = mysql_query($query);
+
+        if ($result) {
+            Utility::message("Delete is successful");
+        } else {
+            Utility::message("Delete is failed.");
+        }
+
+        Utility::redirect('index.php');
     }
 
 }

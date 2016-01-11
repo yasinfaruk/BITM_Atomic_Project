@@ -1,6 +1,7 @@
 <?php
 
 namespace App\BITM\SEIP107348\Radio;
+
 use App\BITM\SEIP107348\Utility\Utility;
 
 class Gender {
@@ -18,7 +19,7 @@ class Gender {
     }
 
     public function store() {
-        
+
         $connect = mysql_connect("localhost", "root", "root");
         $link = mysql_select_db("BITM");
 
@@ -35,7 +36,7 @@ class Gender {
     }
 
     public function index() {
-        
+
         $connect = mysql_connect("localhost", "root", "root");
         $link = mysql_select_db("BITM");
 
@@ -43,26 +44,66 @@ class Gender {
         $result = mysql_query($query);
 
         while ($row = mysql_fetch_assoc($result)) {
-            $email[] = $row;
+            $gender[] = $row;
         }
 
-        return $email;
+        return $gender;
     }
 
-    public function create() {
-        return "create - I am create form";
+    public function view($id = NULL) {
+        
+        if (is_null($id)) {
+            Utility::message('No id available !!');
+            return Utility::redirect('index.php');
+        }
+
+        $connect = mysql_connect("localhost", "root", "root");
+        $link = mysql_select_db("BITM");
+
+        $query = "SELECT * FROM `radio` WHERE `id` = " . $id;
+        $result = mysql_query($query);
+        $row = mysql_fetch_assoc($result);
+
+        return $row;
     }
 
-    public function edit() {
-        return "edit - I am editing form";
+    public function update($id = NULL) {
+        
+        if (is_null($id)) {
+            Utility::message('No id available !!');
+            return Utility::redirect('index.php');
+        }
+        $connect = mysql_connect("localhost", "root", "root");
+        $link = mysql_select_db("BITM");
+
+        $query = "SELECT * FROM `radio` WHERE `id` = " . $id;
+        $result = mysql_query($query);
+        $row = mysql_fetch_assoc($result);
+
+        return $row;
     }
 
-    public function update() {
-        return "update - I am updating data";
-    }
+    public function delete($id = NULL) {
+        
+        if (is_null($id)) {
+            Utility::message('No id available !!');
+            return Utility::redirect('index.php');
+        }
+        
+         $connect = mysql_connect("localhost", "root", "root");
+        $link = mysql_select_db("BITM");
 
-    public function delete() {
-        return "delete - I delete data";
+        $query = "DELETE FROM `radio` WHERE `id` = " . $id;
+        $result = mysql_query($query);
+
+        if ($result) {
+            Utility::message("Delete is successful");
+        } else {
+            Utility::message("Delete is failed.");
+        }
+
+        Utility::redirect('index.php');
+        
     }
 
 }
