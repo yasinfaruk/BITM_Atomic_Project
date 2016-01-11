@@ -17,7 +17,7 @@
                 <div class="row">
                     <div>
                         <div class="col-md-6">
-                            <p class="header_text color_orange">THE LSIT OF EMAIL ADDRESS</p>
+                            <p class="header_text color_orange">THE LIST OF EMAIL ADDRESS</p>
                         </div>
                         <div class="col-md-6">  					
 
@@ -46,9 +46,9 @@
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse navbar-ex1-collapse">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="#">HOME</a></li>
-                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Book/index.php">VIEW</a></li>
-                                    <li><a href="#">ADD BOOK</a></li>
+                                    <li><a href="../../../index.php">HOME</a></li>
+                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Email/index.php">VIEW</a></li>
+                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Email/create.php">ADD EMAIL</a></li>
                                     <!--<li><a href="#">Link</a></li>-->
                                 </ul>
 

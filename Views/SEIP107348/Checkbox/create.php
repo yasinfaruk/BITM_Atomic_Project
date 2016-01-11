@@ -17,7 +17,7 @@
                 <div class="row">
                     <div>
                         <div class="col-md-6">
-                            <p class="header_text color_orange">THE LSIT OF HOBBY</p>
+                            <p class="header_text color_orange">THE LSIT OF HOBBIES</p>
                         </div>
                         <div class="col-md-6">  					
 
@@ -46,9 +46,9 @@
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse navbar-ex1-collapse">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="#">HOME</a></li>
-                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Book/index.php">VIEW</a></li>
-                                    <li><a href="#">ADD BOOK</a></li>
+                                    <li><a href="http://localhost/BITM_Atomic_Project/index.php">HOME</a></li>
+                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Checkbox/index.php">VIEW</a></li>
+                                    <li><a href="#">ADD HOBBIES</a></li>
                                     <!--<li><a href="#">Link</a></li>-->
                                 </ul>
 
@@ -75,22 +75,22 @@
                             <form class="form-horizontal" action="store.php" method="post">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="hobby" value="Coding"> Coding
+                                        <input type="checkbox" name="hobby[]" value="Coding"> Coding
                                     </label>
                                     <label>
-                                        <input type="checkbox" name="hobby" value="Traveling"> Traveling
+                                        <input type="checkbox" name="hobby[]" value="Traveling"> Traveling
                                     </label>
                                     <label>
-                                        <input type="checkbox" name="hobby" value="Cricket"> Cricket
+                                        <input type="checkbox" name="hobby[]" value="Cricket"> Cricket
                                     </label>
                                     <label>
-                                        <input type="checkbox" name="hobby" value="Music"> Music
+                                        <input type="checkbox" name="hobby[]" value="Music"> Music
                                     </label>
                                     <label>
-                                        <input type="checkbox" name="hobby" value="Reading"> Reading
+                                        <input type="checkbox" name="hobby[]" value="Reading"> Reading
                                     </label>
                                     <label>
-                                        <input type="checkbox" name="hobby" value="Watching Movie"> Watching Movie
+                                        <input type="checkbox" name="hobby[]" value="Watching Movie"> Watching Movie
                                     </label>
                                 </div><br>
                                

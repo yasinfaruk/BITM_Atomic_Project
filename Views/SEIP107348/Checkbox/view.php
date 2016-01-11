@@ -2,12 +2,12 @@
 <?php
 include_once ($_SERVER["DOCUMENT_ROOT"] . DIRECTORY_SEPARATOR . "BITM_Atomic_Project" . DIRECTORY_SEPARATOR . "Views" . DIRECTORY_SEPARATOR . "startup.php");
 
-use App\BITM\SEIP107348\Book\Book;
+use App\BITM\SEIP107348\Checkbox\Hobby;
 use App\BITM\SEIP107348\Utility\Utility;
 
-$view = new Book();
+$view = new Hobby();
 
-$views = $view->index();
+$views = $view->view($_GET['id']);
 
 //var_dump($views);
 ?>
@@ -16,7 +16,7 @@ $views = $view->index();
 <!DOCTYPE>
 <html>
     <head>
-        <title>Book Store</title>
+        <title>HOBBIES</title>
         <link href="../../../Asset/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link href="../../../Asset/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="../../../Asset/css/main.css" rel="stylesheet" type="text/css"/>
@@ -29,7 +29,7 @@ $views = $view->index();
                 <div class="row">
                     <div>
                         <div class="col-md-6">
-                            <p class="header_text text-success">THE LSIT OF BOOKS</p>
+                            <p class="header_text text-success">THE LSIT OF HOBBIES</p>
                         </div>
                         <div class="col-md-6">  					
 
@@ -64,14 +64,15 @@ $views = $view->index();
                             <h4>Message!</h4>
                             <?php echo Utility::message(); ?>
                         </div>
+                        
 
                         <nav class="navbar navbar-default" role="navigation">
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse navbar-ex1-collapse">
                                 <ul class="nav navbar-nav">
                                     <li><a href="../../../index.php">HOME</a></li>
-                                    <li><a href="#">VIEW</a></li>
-                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Book/create.php">ADD BOOK</a></li>
+                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Checkbox/index.php">VIEW</a></li>
+                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Checkbox/create.php">ADD HOBBIES</a></li>
                                     <!--<li><a href="#">Link</a></li>-->
 
                                 </ul>
@@ -83,7 +84,7 @@ $views = $view->index();
                                         </div>
                                         <button type="submit" class="btn btn-default">Submit</button>
                                     </form>
-                                    
+
                                     <form class="navbar-form navbar-left" role="search" action="download.php" method="post">
                                         <div class="form-group">
                                             <input type="submit" value="Download" name="export" class="form-control" />
@@ -100,38 +101,25 @@ $views = $view->index();
                                 <thead>
                                     <!-- <a href="#" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new categories</a> -->
                                     <tr>
-                                        <th>List</th>
-                                        <th>Title</th>
+                                        <th class="text-center">Id</th>
+                                        <th class="text-center">Title</th>
                                         <!--<th>Created</th>-->
                                         <!--<th>Modified</th>-->
                                         <!--<th>Creatd By</th>-->
                                         <!--<th>Modified By</th>-->
-                                        <th class="text-center">Action</th>
+                                        <!--<th class="text-center">Action</th>-->
                                     </tr>
-                                </thead>                                
-
-                                <?php $n = 1;
-                                foreach ($views as $book) {
-                                    ?>                                    
-                                    <tr>
-                                        <td><?php echo $n; ?></td>
-                                        <td><?php echo $book['title']; ?></td>
-                                        <td class="text-center">
-                                            <a class='btn btn-info btn-xs' href="view.php?id=<?php echo $book['id']; ?>"><span class="glyphicon glyphicon-edit"></span> View </a> 
-                                            <a class='btn btn-success btn-xs' href="update.php?id=<?php echo $book['id']; ?>"><span class="glyphicon glyphicon-pencil"></span> Edit</a> 
-                                            <a href="delete.php?id=<?php echo $book['id']; ?>" name="delete" class="btn btn-danger btn-xs delete"><span class="glyphicon glyphicon-remove"></span> Delete</a>
-                                            <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-trash"></span> Recover</a>
-                                            <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-envelope"></span> Email</a>
-                                        </td>
-                                    </tr> 
-
-    <?php $n++;
-} ?>
+                                </thead>                              
+                                <tr class="text-center">
+                                    <td><?php echo $views['id']; ?></td>
+                                    <td><?php echo $views['hobby']; ?></td>
+                                </tr> 
                             </table>
 
                         </div>
                     </form>
-                    <!-- ---------- pagination ------------ -->
+                    
+<!--                     ---------- pagination ------------ 
                     <div class="table_pagination">
                         <ul class="pagination pagination-sm">
                             <li class="disabled"><a href="#">&laquo;</a></li>
@@ -142,7 +130,7 @@ $views = $view->index();
                             <li><a href="#">5</a></li>
                             <li><a href="#">&raquo;</a></li>
                         </ul>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </section>
@@ -150,9 +138,11 @@ $views = $view->index();
         <!------------------- jquery-part ------------------>
 
         <script>
-            
+
+
             $(document).ready(function () {
-                
+
+//                alert('hi');
                 $(".alert-message").alert();
                 window.setTimeout(function () {
                     $(".alert-message").alert('close');
@@ -161,11 +151,15 @@ $views = $view->index();
                 $('.delete').bind('click', function (e) {
                     var deleteItem = confirm('Do you want to delete ?');
                     if (!deleteItem) {
+//                        return false;
                         e.preventDefault();
                     }
                 });
+
+
             });
 
         </script>
     </body>
 </html>
+

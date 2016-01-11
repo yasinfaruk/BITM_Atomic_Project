@@ -1,6 +1,5 @@
 
 <?php
-
 include_once ($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . "BITM_Atomic_Project" . DIRECTORY_SEPARATOR . "vendor" . DIRECTORY_SEPARATOR . "autoload.php");
 
 use App\BITM\SEIP107348\Date\Birthday;
@@ -10,10 +9,6 @@ $view = new Birthday();
 $views = $view->index();
 
 //Utility::d($views);
-
-
-
-
 ?>
 
 
@@ -23,7 +18,9 @@ $views = $view->index();
         <title>Book Store</title>
         <link href="../../../Asset/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link href="../../../Asset/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../../../Asset/css/main.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../Asset/css/main.css" rel="stylesheet" type="text/css"/>        
+        <script src="../../../Asset/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+        <script src="../../../Asset/js/bootstrap.min.js" type="text/javascript"></script>
     </head>
     <body>
         <section class="header_part">
@@ -31,7 +28,7 @@ $views = $view->index();
                 <div class="row">
                     <div>
                         <div class="col-md-6">
-                            <p class="header_text text-success">THE LSIT OF BOOKS</p>
+                            <p class="header_text text-success">THE LIST OF DATES</p>
                         </div>
                         <div class="col-md-6">  					
 
@@ -60,8 +57,8 @@ $views = $view->index();
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse navbar-ex1-collapse">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="#">HOME</a></li>
-                                    <li><a href="#">VIEW</a></li>
+                                    <li><a href="../../../index.php">HOME</a></li>
+                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Date/index.php">VIEW</a></li>
                                     <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Date/create.php">ADD DATE</a></li>
                                     <!--<li><a href="#">Link</a></li>-->
 
@@ -97,22 +94,20 @@ $views = $view->index();
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
-                            <?php foreach ($views as $date) { ?>
-                            <tr>
-                                <td><?php echo $date['id'];?></td>
-                                <td><?php echo $date['birthday'];?></td>
-                                <!--<td>News Cate</td>-->
-                                <!--<td>News Cate</td>-->
-                                <!--<td>News Cate</td>-->
-                                <!--<td>News Cate</td>-->
-                                <td class="text-center">
-                                    <a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> 
-                                    <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Delete</a>
-                                    <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Delete</a>
-                                    <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Delete</a>
-                                </td>
-                            </tr>  
-                            <?php }?>
+<?php foreach ($views as $date) { ?>
+                                <tr>
+                                    <td><?php echo $date['id']; ?></td>
+                                    <td><?php echo $date['birthday']; ?></td>
+
+                                    <td class="text-center">
+                                        <a class='btn btn-info btn-xs' href="view.php?id=<?php echo $date['id']; ?>"><span class="glyphicon glyphicon-edit"></span> View </a> 
+                                        <a class='btn btn-success btn-xs' href="update.php?id=<?php echo $date['id']; ?>"><span class="glyphicon glyphicon-pencil"></span> Edit</a> 
+                                        <a href="delete.php?id=<?php echo $date['id']; ?>" name="delete" class="btn btn-danger btn-xs delete"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                                        <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-trash"></span> Recover</a>
+                                        <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-envelope"></span> Email</a>
+                                    </td>
+                                </tr>  
+<?php } ?>
                         </table>
 
                     </div>
@@ -131,6 +126,28 @@ $views = $view->index();
                 </div>
             </div>
         </section>
+        
+        <!------------------- jquery-part ------------------>
+
+        <script>
+            
+            $(document).ready(function () {
+                
+                $(".alert-message").alert();
+                window.setTimeout(function () {
+                    $(".alert-message").alert('close');
+                }, 5000);
+
+                $('.delete').bind('click', function (e) {
+                    var deleteItem = confirm('Do you want to delete ?');
+                    if (!deleteItem) {
+                        e.preventDefault();
+                    }
+                });
+            });
+
+        </script>
+        
     </body>
 </html>
 

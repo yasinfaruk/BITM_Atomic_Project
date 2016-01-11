@@ -46,8 +46,8 @@ class Book {
 
         return $books;
     }
-    
-     public function view($id = null) {
+
+    public function view($id = null) {
         if (is_null($id)) {
             Utility::message('No id available !!');
             return Utility::redirect('index.php');
@@ -62,8 +62,8 @@ class Book {
         $row = mysql_fetch_assoc($result);
         return $row;
     }
-    
-     public function update($id = null) {
+
+    public function update($id = null) {
         if (is_null($id)) {
             Utility::message('No id available !!');
             return Utility::redirect('index.php');
@@ -101,6 +101,24 @@ class Book {
         Utility::redirect('index.php');
     }
 
-   
+//    ------------------------- Download-PDF -------------------------
+//    public function download($data = NULL) {
+//
+//        header('Content-Type: text/csv; charset=utf-8');
+//        header('Content-Disposition: attachment; filename=data.csv');
+//
+//        $output = fopen('php://output', 'w');
+//
+//        fputcsv($output, array('User ID', 'User Name', 'Password'));
+//        $con = mysqli_connect('localhost', 'root', 'pass', 'xyz');
+//        $rows = mysqli_query($con, 'SELECT * FROM users');
+//
+//        while ($row = mysqli_fetch_assoc($rows)) {
+//            fputcsv($output, $row);
+//        }
+//        fclose($output);
+//        mysqli_close($con);
+//        exit();
+//    }
 
 }

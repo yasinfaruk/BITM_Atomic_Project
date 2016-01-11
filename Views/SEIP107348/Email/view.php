@@ -1,7 +1,20 @@
+
+<?php
+include_once ($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . "BITM_Atomic_Project" . DIRECTORY_SEPARATOR . "vendor" . DIRECTORY_SEPARATOR . "autoload.php");
+
+use App\BITM\SEIP107348\Email\Subscription;
+use App\BITM\SEIP107348\Utility\Utility;
+
+$view = new Subscription();
+$email = $view->view($_GET['id']);
+
+//Utility::d($views);
+?>
+
 <!DOCTYPE>
 <html>
     <head>
-        <title>Birthday</title>
+        <title>Email Subscription</title>
         <link href="../../../Asset/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link href="../../../Asset/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="../../../Asset/css/main.css" rel="stylesheet" type="text/css"/>
@@ -17,7 +30,7 @@
                 <div class="row">
                     <div>
                         <div class="col-md-6">
-                            <p class="header_text color_orange">THE LSIT OF BIRTHDAY</p>
+                            <p class="header_text color_orange">THE LIST OF EMAIL ADDRESS</p>
                         </div>
                         <div class="col-md-6">  					
 
@@ -47,8 +60,8 @@
                             <div class="collapse navbar-collapse navbar-ex1-collapse">
                                 <ul class="nav navbar-nav">
                                     <li><a href="../../../index.php">HOME</a></li>
-                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Date/index.php">VIEW</a></li>
-                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Date/create.php">ADD DATE</a></li>
+                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Email/index.php">VIEW</a></li>
+                                    <li><a href="http://localhost/BITM_Atomic_Project/Views/SEIP107348/Email/create.php">ADD EMAIL</a></li>
                                     <!--<li><a href="#">Link</a></li>-->
                                 </ul>
 
@@ -67,17 +80,18 @@
                         </nav>
                     </div>
 
-                    <!--======================= add-book-form =====================-->
+                    <!--======================= add-email-form =====================-->
                     <?php // echo $_POST['date'];?>
                     <div class="add_book">
                         <div class="add_book_form col-md-8">
-                            <h4 class="color_orange">Add Your Birthday</h4>
+                            <h4 class="color_orange">Subscribe Your Email Address</h4>
                             <form class="" action="store.php" method="post">
                                 <div class="form-group">
-                                    <input type="date" name="date" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email" value="<?php echo $email['email'];?>">
                                 </div>
 
                                 <button type="submit" name="submit" class="btn btn-default">Submit</button>
+                                <button type="reset" class="btn btn-default">Reset</button>
                             </form>
 
                         </div>

@@ -75,23 +75,11 @@
                             <form class="form-horizontal" method="post" action="store.php">
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="radio" value="Titanic"> Titanic
+                                        <input type="radio" name="radio" value="male"> Male
                                     </label>
                                     <label>
-                                        <input type="radio" name="radio" value="Avatar"> Avatar
+                                        <input type="radio" name="radio" value="female"> Female
                                     </label>
-                                    <label>
-                                        <input type="radio" name="radio" value="Harry Ptter"> Harry Potter
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="radio" value="Mission Impossible"> Mission Impossible
-                                    </label>
-<!--                                    <label>
-                                        <input type="radio" name="radio"> Mission Impossible
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="radio"> Beautiful Mind
-                                    </label>-->
                                 </div><br>
                                
                                 <button name="submit" type="submit" class="btn btn-default">Submit</button>
