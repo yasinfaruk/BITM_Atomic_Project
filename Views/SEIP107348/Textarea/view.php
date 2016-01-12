@@ -6,7 +6,7 @@ use App\BITM\SEIP107348\Textarea\Summary;
 use App\BITM\SEIP107348\Utility\Utility;
 
 $view = new Summary();
-$views = $view->index();
+$text = $view->view($_GET['id']);
 
 //Utility::d($views);
 ?>
@@ -28,7 +28,7 @@ $views = $view->index();
                 <div class="row">
                     <div>
                         <div class="col-md-6">
-                            <p class="header_text text-success">THE LIST OF SUMMARIES</p>
+                            <p class="header_text text-success">THE LIST OF CITIES</p>
                         </div>
                         <div class="col-md-6">  					
 
@@ -91,26 +91,12 @@ $views = $view->index();
                                     <!--<th>Modified</th>-->
                                     <!--<th>Creatd By</th>-->
                                     <!--<th>Modified By</th>-->
-                                    <th class="text-center">Action</th>
                                 </tr>
-                            </thead>
-                            <?php foreach ($views as $text) { ?>
-                                <tr>
-                                    <td><?php echo $text['id']; ?></td>
-                                    <td><?php echo $text['summary']; ?></td>
-                                    <!--<td>News Cate</td>-->
-                                    <!--<td>News Cate</td>-->
-                                    <!--<td>News Cate</td>-->
-                                    <!--<td>News Cate</td>-->
-                                    <td class="text-center">
-                                        <a class='btn btn-info btn-xs' href="view.php?id=<?php echo $text['id']; ?>"><span class="glyphicon glyphicon-edit"></span> View </a> 
-                                        <a class='btn btn-success btn-xs' href="update.php?id=<?php echo $text['id']; ?>"><span class="glyphicon glyphicon-pencil"></span> Edit</a> 
-                                        <a href="delete.php?id=<?php echo $text['id']; ?>" name="delete" class="btn btn-danger btn-xs delete"><span class="glyphicon glyphicon-remove"></span> Delete</a>
-                                        <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-trash"></span> Recover</a>
-                                        <a href="#" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-envelope"></span> Email</a>
-                                    </td>
-                                </tr>  
-                            <?php } ?>
+                            </thead>                          
+                            <tr>
+                                <td><?php echo $text['id']; ?></td>
+                                <td><?php echo $text['summary']; ?></td>
+                            </tr>                             
                         </table>
 
                     </div>
